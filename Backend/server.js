@@ -7,7 +7,7 @@ app.get('/test',(req,res)=>{
     res.send('server running!');
 })
 // included the port from env file
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 app.listen(port,()=>{
     console.log(`server is runnig on Port:${port}...`)
 })
