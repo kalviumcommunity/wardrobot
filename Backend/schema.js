@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const data = new mongoose.Schema({
     userName:{
         type: String,
-        required: true
+        required: false
     },
     shirts:{
         type: String,
@@ -19,7 +19,7 @@ const data = new mongoose.Schema({
     },
     occasion:{
         type:String,
-        required:true
+        required:false
     }
 })
 const dataSet = mongoose.model('dataSet',data)
