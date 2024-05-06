@@ -5,30 +5,27 @@ const multer = require('multer');
 const cors = require('cors');
 const routes = require('./routes');
 const app = express();
+const path = require('path')
 
-// Configure CORS correctly
+
 const corsOptions = {
     origin: 'http://localhost:5173',
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
-
-// Middleware for parsing JSON bodies
 app.use(express.json());
-
-// Database connection functions
+app.use(express.static('public'))
 const { connectDb, checkconnected } = require('./db');
 connectDb();
 
-// Routes
+
 app.use('/api', routes);
 
-// Test route
+
 app.get('/test', (req, res) => {
     res.send('Server running!');
 });
 
-// Database connection status
 app.get('/', (req, res) => {
     if (checkconnected()) {
         res.send('Database connection status: Connected');
