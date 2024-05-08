@@ -8,7 +8,20 @@ function Test() {
     const [occasion, setOccasion] = useState('');
     const [file, setFile] = useState(null);
     const [images, setImages] = useState([]); 
+    useEffect(() => {
+        const cookieValue = getCurrentCookieValue();
+        if (cookieValue) {
+            setUserName(cookieValue);
+        }
+    }, []); 
 
+    function getCurrentCookieValue() {
+        const cookie = document.cookie;
+        if (!cookie) {
+            return null;
+        }
+        return cookie.split(';')[0].split('=')[1]; 
+    }
     const uploadFile = () => {
         if (!file || !dress || !occasion) { 
             alert("Please enter a dress type, occasion, and select a file.");
@@ -41,7 +54,6 @@ function Test() {
 
     return (
         <div>
-            <input type="text" placeholder="username" onChange={e=>setUserName(e.target.value)}/>
             <input type="text" placeholder="Dress Type" onChange={e => setDress(e.target.value)} />
             <input type="text" placeholder="Occasion" onChange={e => setOccasion(e.target.value)} />
             <input type="file" onChange={e => setFile(e.target.files[0])} />
