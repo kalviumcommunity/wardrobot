@@ -1,12 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
-const mongoose = require('mongoose');
-const multer = require('multer');
 const cors = require('cors');
 const routes = require('./routes');
 const app = express();
-const path = require('path')
-
+const userRoutes = require('./userRoutes')
 
 const corsOptions = {
     origin: 'http://localhost:5173',
@@ -20,7 +17,7 @@ connectDb();
 
 
 app.use('/api', routes);
-
+app.use('/users', userRoutes);
 
 app.get('/test', (req, res) => {
     res.send('Server running!');
