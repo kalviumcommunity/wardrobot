@@ -1,24 +1,14 @@
-import { useState } from 'react'
 import './App.css'
-import Test from "./test"
-import Login from './login'
 import Landingpage from './components/landingpage'
+import Setuppage1 from './components/setupage1';
 import { Route, Routes } from 'react-router-dom';
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
+return (
     <>
-        
-        {/* <Login/>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Test/> */}
       <Routes>
         <Route path='/' element={<Landingpage/>}></Route>
+        <Route path='/setup1' element={<Setuppage1/>}></Route>
       </Routes>
     </>
   )
