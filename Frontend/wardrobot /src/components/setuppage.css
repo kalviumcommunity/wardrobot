@@ -1,0 +1,150 @@
+#shirt2{
+    position: relative;
+    top: 35px;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+}
+#logo2{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    margin: 10px;
+}
+.user-form{
+    position: relative;
+    bottom: 300px;
+    right: 200px;
+    display: flex;
+    justify-content: flex-end;
+}
+.user-setup{
+    position: relative;
+    right: 300px;
+    bottom: 550px;
+    text-align: right;
+    font-size: 3rem;
+    font-weight: 900;
+}
+.user-form{
+    position: relative;
+    left: 700px;
+    bottom: 550px;
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    width: 400px;
+    padding: 50px 80px 190px 30px;
+    border-radius: 25px;
+    box-shadow: -2px 4px 25px rgba(31, 31, 31, 0.311);
+}
+.user-form label,select{
+    position: relative;
+    bottom: 10px;
+    left: 50px;
+}
+.user-form label{
+    font-size: 1.4rem;
+}
+.user-form select{
+    position: relative;
+    top: 10px;
+    width: 450px;
+    height: 30px;
+    background-color: #c5ffe398;
+    border: none;
+    border-radius: 5px;
+}
+.ocassion{
+    position: relative;
+    top: 60px;
+}
+.add-wardobe{
+    position: relative;
+    top: 160px;
+    left: 300px;
+    font-size: 1.2rem;
+    border-radius: 55px;
+    border: none;
+    background-color: #87B4C2;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+    transition: all 0.3s ease;
+}
+.add-wardobe:active {
+    box-shadow: 0 2px 4px rgba(31, 31, 31, 0.686); 
+    transform: translateY(2px);
+}
+@media (max-width: 480px){
+    .user-form{
+        display: flex;
+        justify-content: flex-start;
+    }
+    #logo2{
+        height: 25px;
+        justify-content: center;
+        margin-left: 30%;
+        margin-top: -5px;
+    }
+    #shirt2{
+        display: flex;
+        justify-content: center;
+        height: 230px;
+        left: 70px;
+        top: 60px;
+    }
+    .user-setup{
+        top: 50px;
+        right: -1px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    .user-form{
+        bottom: 300px;
+        right: -20px;
+        display: flex;
+        justify-content: center;
+    }
+    .user-form{
+        position: relative;
+        left: 12px;
+        bottom: -80px;
+        display: flex;
+        justify-content: center;
+        width: 290px;
+        padding: 25px 40px 80px 15px;
+        border-radius: 15px;
+    }
+    .user-form label,select{
+        position: relative;
+        bottom: -10px;
+        left: 15px;
+    }
+    .user-form label{
+        font-size: 0.7rem;
+    }
+    .user-form select{
+        position: relative;
+        top: 15px;
+        width: 280px;
+        height: 15px;
+        background-color: #c5ffe398;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.7rem;
+    }
+    .ocassion{
+        position: relative;
+        top: 30px;
+    }
+    .add-wardobe{
+        position: relative;
+        top: 65px;
+        left: 201px;
+        font-size: 0.6rem;
+        border-radius: 25px;
+        padding: 2.5px 7.5px 2.5px 7.5px;
+    }
+}

@@ -6,7 +6,7 @@ return(
         <ul>
             <li> <Link id="link" to='/'>Home</Link> </li>
             <li><Link id="link" to='/'>About</Link></li>
-            <li><Link id="link" to='/'>Login</Link></li>
+            <li><Link id="link" to='/login'>Login</Link></li>
             <li><Link id="link" to='/'>Sign up</Link></li>
         </ul>
     </div>

@@ -12,6 +12,7 @@ import './setuppage1.css';
 function Setuppage1() {
     const navigate = useNavigate(); 
     const handleClick =()=>{
+        console.log(File)
         navigate('/setup')
     }
     return (
@@ -24,13 +25,13 @@ function Setuppage1() {
             <div className='user-form1'>
                 <form action="" className='user-forms'>
                     <div>
-                        <input className='file-input' type="file"/>
+                        <input className='file-input' id='inp-file' type="file" onChange={handleClick}/>
                     </div>
-                    <button className='add-wardobe1' type='submit' onClick={handleClick}>Add dress <img src={upwardArrow} alt="" id='upward-arrow' /></button>
+                    <button className='add-wardobe1' type='submit' >Add dress <img src={upwardArrow} alt="" id='upward-arrow' /></button>
                     <p id='drop-text'>or drop an image file</p>
                 </form>
             </div>
-            <Link id='finish-setup' to='/home'>Finish set up</Link>
+            <Link id='finish-setup' to='/'>Finish set up</Link>
         </div>
     );
 }
