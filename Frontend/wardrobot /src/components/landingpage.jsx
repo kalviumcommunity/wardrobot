@@ -18,7 +18,7 @@ function Landingpage() {
         setMoveRight(!moveRight);
         setmoveFront(!moveFront);
         setTimeout(() => {
-            navigate('/login'); 
+            navigate('/signup'); 
         }, 700);
     };
 

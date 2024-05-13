@@ -12,7 +12,6 @@ import './setuppage1.css';
 function Setuppage1() {
     const navigate = useNavigate(); 
     const handleClick =()=>{
-        console.log(File)
         navigate('/setup')
     }
     return (
@@ -31,7 +30,7 @@ function Setuppage1() {
                     <p id='drop-text'>or drop an image file</p>
                 </form>
             </div>
-            <Link id='finish-setup' to='/'>Finish set up</Link>
+            <Link id='finish-setup' to='/home'>Finish set up</Link>
         </div>
     );
 }
