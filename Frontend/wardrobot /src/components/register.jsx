@@ -1,7 +1,6 @@
 import React from 'react';
 import './register.css';
 import logo from "./assets/logo.png";
-import downbtn from "./assets/DownButton.png";
 import profile from "./assets/profile.png"
 import ellipse from "./assets/Ellipse.png";
 import { Link } from 'react-router-dom';

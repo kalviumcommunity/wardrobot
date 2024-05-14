@@ -5,6 +5,7 @@ import Setuppage1 from './components/setupage1';
 import SetupPage from "./components/setuppage"
 import Login from './components/login';
 import Register from './components/register';
+import Mainpage from './components/mainpage';
 import { Route, Routes } from 'react-router-dom';
 function App() {
 
@@ -17,6 +18,7 @@ return (
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/home' element={<Homepage/>}></Route>
         <Route path='/signup' element={<Register/>}></Route>
+        <Route path='/main' element={<Mainpage/>}></Route>
       </Routes>
     </>
   )
