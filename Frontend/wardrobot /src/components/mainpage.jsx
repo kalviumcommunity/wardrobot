@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from "./navbars";
 import logo from "./assets/logo.png";
 import ellipse from "./assets/Ellipse.png";
+import Climate from './climate';
 import './mainpage.css';
 
 
@@ -49,6 +50,7 @@ function Mainpage() {
                 </div>
               
             </div>
+            <Climate/>
         </div>
     );
 }

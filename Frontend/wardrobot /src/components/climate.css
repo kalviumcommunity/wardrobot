@@ -1,0 +1,282 @@
+.heading{
+    text-align: center;
+    font-weight: 800;
+    font-size: 2rem;
+}
+.climate-texts h1{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 50px;
+    font-size: 4rem;
+    font-weight: 800;
+    text-align: left;
+}
+.climate-texts h2{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 50px;
+    font-size: 5.5rem;
+    font-weight: 800;
+    bottom: 60px;
+    background: linear-gradient(to right,  #A9FFD6,#004323);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    color: transparent; 
+}
+.show-outfit-btn{
+    position: relative;
+    bottom:110px;
+    margin-left: 50px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #87B4C2;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+    transition: all 0.3s ease;
+}
+.climate-images{
+    position: relative;
+    bottom: 750px;
+}
+#climate-text1{
+    position: relative;
+    left: 900px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 4.5rem;
+    font-weight: 900;
+    background: linear-gradient(to right,  #A9FFD6,#004323);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    text-shadow: -3px 10px 4px rgba(0, 0, 0, 0.2), -1px -2px 4px rgba(255,255,255,0.1);
+    color:transparent;
+}
+.climate-images img{
+    position: relative;
+    left: 850px;
+    top: 130px;
+}
+.container2{
+    position: relative;
+    margin-left: 50px;
+    margin-top: -550px;
+    height: 700px;
+    width: 1320px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
+}
+.container2 h1{
+    display: flex ;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 800;
+    margin-bottom: 120px;
+    padding-top: 20px;
+}
+#climate-text2{
+    position: relative;
+    left: 150px;
+    top: -30px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 4.5rem;
+    font-weight: 900;
+    background: linear-gradient(to right,  #A9FFD6,#004323);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    text-shadow: -3px 10px 4px rgba(0, 0, 0, 0.2), -1px -2px 4px rgba(255,255,255,0.1);
+    color:transparent;
+}
+#climate-img{
+    position: relative;
+    bottom: 120px;
+    margin-left: 100px;
+}
+.outfit-display{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 500px;
+
+}
+.outfit-display div{
+    position: relative;
+    left: 100px;
+    padding: 120px 150px 120px 150px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
+    margin-bottom: 50px;
+}
+.outfit-display .acessory{
+    position: relative;
+    left: 470px;
+    bottom: 450px;
+}
+.buttons2{
+    position: relative;
+    right: 90px;
+    bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -900px;
+}
+.buttons2 .back2,.next2{
+    position: relative;
+    left: 110px;
+    border: none;
+    background: none;
+    margin-left: 30px;
+    font-size: 1.2rem;
+}
+.buttons2 .add-new-dress{
+    position: relative;
+    right: 60px;
+    top: 50px;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #BAC287;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+    transition: all 0.3s ease;
+}
+@media (max-width: 480px){
+    .container2 h1{
+        display: flex ;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+        font-weight: 800;
+        margin-bottom: 120px;
+        padding-top: 20px;
+        font-size: 1.5rem;
+    }
+    .heading{
+        position: relative;
+        top: 50px;
+        font-size: 1rem;
+    }
+    .climate-texts h1{
+        position: relative;
+        top: 330px;
+        margin-left: 50px;
+        font-size: 2rem;
+        text-align: right;
+    }
+    .climate-texts h2{
+        position: relative;
+        bottom: -290px;
+        right: -170px;
+        display: flex;
+        justify-content: flex-start;
+        margin-left: -10px;
+        font-size: 2.5rem;
+        text-align: right;
+    }
+    .climate-images img{
+        position: relative;
+        height: 170px;
+        left: 50px;
+        top: 520px;
+    }
+    .container2{
+        position: relative;
+        margin-left: 1px;
+        margin-top: -30px;
+        height: 700px;
+        width: 360px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
+    }
+    .show-outfit-btn{
+        position: relative;
+        bottom:-270px;
+        margin-left: 225px;
+        font-size: 0.9rem;
+        border-radius: 15px;
+        border: none;
+        background-color: #87B4C2;
+        color: white;
+        padding: 5px 15px 5px 15px;
+        box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+        transition: all 0.3s ease;
+    }
+    #climate-text1{
+        position: relative;
+        top: 550px;
+        left: -55px;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(to right,  #A9FFD6,#004323);
+        -webkit-background-clip: text;
+        background-clip: text; 
+        text-shadow: -3px 10px 4px rgba(0, 0, 0, 0.2), -1px -2px 4px rgba(255,255,255,0.1);
+        color:transparent;
+    }
+    #climate-img{
+        position: relative;
+        bottom: 120px;
+        margin-left: 80px;
+        height: 170px;
+    }
+    .outfit-display div{
+        position: relative;
+        top: 420px;
+        left: -90px;
+        padding: 60px 70px 60px 70px;
+    }
+    .outfit-display .acessory{
+        position: relative;
+        left: 90px;
+        top: 170px;
+    }
+    #climate-text2{
+        position: relative;
+        left: -35px;
+        top: -70px;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 2.5rem;
+        font-weight: 900;
+        
+    }
+    .buttons2{
+        position: relative;
+        right: -40px;
+        bottom: -550px;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -900px;
+    }
+    .buttons2 .back2,.next2{
+        position: relative;
+        top: 20px;
+        left: 60px;
+        border: none;
+        background: none;
+        margin-left: 10px;
+        font-size: 0.8rem;
+    }
+    .buttons2 .add-new-dress{
+        position: relative;
+        right: 60px;
+        top: 50px;
+        font-size: 0.6rem;
+        border-radius: 15px;
+        border: none;
+        background-color: #BAC287;
+        color: white;
+        padding: 5px 15px 5px 15px;
+        box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+        transition: all 0.3s ease;
+    }
+}
