@@ -8,7 +8,9 @@ import Register from './components/register';
 import Mainpage from './components/mainpage';
 import { Route, Routes } from 'react-router-dom';
 function App() {
-
+window.onload = function() {
+    window.location.href = '/home';
+};
 return (
     <>
       <Routes>

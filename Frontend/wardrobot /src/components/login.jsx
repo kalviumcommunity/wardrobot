@@ -24,28 +24,33 @@ function Login() {
     };
     // removeAllCookies()
     const handleLogin = async (e) => {
-        e.preventDefault()
-        setLoading(true)
+        e.preventDefault();
+        setLoading(true);
         try {
-            const userData = await axios.get(`https://wardrobot-21.onrender.com/users/getuserbyUsername/${userName}`);
-            const fetchedPassword=userData.data[0].password;
-            console.log(fetchedPassword)
-            if (fetchedPassword===password){
+            const userData = await axios.get(`http://localhost:3000/users/getuserbyUsername/${userName}`);
+            const fetchedPassword = userData.data[0].password;
+            console.log(fetchedPassword);
+            if (fetchedPassword === password) {
                 if (userData.status === 201) {
                     Cookies.set('userName', userName, { expires: 7 });
                     console.log(userData);
                     navigate('/home');
                 }
-            }else{
-                alert('incorrect password or username')
+            } else {
+                setTimeout(() => {
+                    alert('incorrect password or username');
+                }, 5000); // 5000 milliseconds = 5 seconds
             }
         } catch (err) {
             console.log(err);
-            alert('incorrect password or username')
-        }finally {
-            setLoading(false); 
+            setTimeout(() => {
+                alert('incorrect password or username');
+            }, 5000);
+        } finally {
+            setLoading(false);
         }
-    };    
+    };
+      
 
     return (
         <>
