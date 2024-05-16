@@ -101,10 +101,17 @@
   }
   
   .btn {
+    position: relative;
+    top: 15px;
+    left: 90px;
     background: linear-gradient(144deg, #87B4C2, #87B4C2 50%, #87B4C2);
-    
     color: #fff;
     padding: 16px !important;
+    width: 150px;
+    border-radius: 15px;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
   }
   
   .btn:hover {
