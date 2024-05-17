@@ -11,11 +11,11 @@ const dataSchema = new mongoose.Schema({
     },
     dressType: {
         type: String,
-        required: true
+        required: false
     },
     occasion: {  
         type: String,
-        required: true
+        required: false
     }
 });
 
