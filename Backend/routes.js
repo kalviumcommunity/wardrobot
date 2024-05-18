@@ -72,22 +72,23 @@ router.post('/upload', upload.single('file'), (req, res) => {
         res.status(500).send({ error: "Error creating outfit" });
     });
 });
-//for updating the outfit
-router.put('/updateoutfit/:id',(req,res)=>{
-    Outfit.findByIdAndUpdate(req.params.id,req.body,{new:true})
-    .then(updateOutfit=>{
-        if (!updateOutfit){
-            console.log({ message: "Outfit updated" }); 
-            res.status(200).json({ message: "Outfit successfully updated" });
-        }else{
-            res.status(404).json({ message: "Outfit not found" });
-        }
-    })
-    .catch(err =>{
-        console.error(err);
-        res.status(500).json({ message: "Server error during outfit updation" }); 
-    })
-})
+
+router.put('/updateoutfit/:id', (req, res) => {
+    Outfit.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(updateOutfit => {
+            if (updateOutfit) {
+                console.log({ message: "Outfit updated" });
+                res.status(200).json({ message: "Outfit successfully updated", outfit: updateOutfit });
+            } else {
+                res.status(404).json({ message: "Outfit not found" });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: "Server error during outfit update" });
+        });
+});
+
 //for deleting the outfit by id
 router.delete('/deleteOutfit/:id', (req, res) => {
     Outfit.findByIdAndDelete(req.params.id)

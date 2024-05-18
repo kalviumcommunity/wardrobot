@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './navbars';
 import logo from './assets/logo.png';
 import ellipse from './assets/Ellipse.png';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Climate from './climate';
 import './mainpage.css';
 import Cookies from 'js-cookie';
 
 function Mainpage() {
+    const [outfits, setOutfits] = useState([]);
+    const [currentOutfitIndex, setCurrentOutfitIndex] = useState(0);
     const [shirt, setShirt] = useState('');
     const [pant, setPant] = useState('');
     const [accessory, setAccessory] = useState('');
     const [occasion, setOccasion] = useState('');
     const [userName, setUserName] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUsername = () => {
@@ -28,33 +30,57 @@ function Mainpage() {
         };
         fetchUsername();
     }, []);
-    const navigate = useNavigate()
-    const addNew=()=>{
-        navigate('/setup1')
-    }
+
+    const addNew = () => {
+        navigate('/setup1');
+    };
+
     const fetchOutfit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
-            console.log('Outfit response:', response);
-
-            response.data.forEach(item => {
-                switch (item.dressType) {
-                    case 'Shirt':
-                        setShirt(item.image);
-                        break;
-                    case 'Pant':
-                        setPant(item.image);
-                        break;
-                    default:
-                        setAccessory(item.image);
-                        break;
-                }
-            });
+            console.log('Outfit response:', response.data);
+            setOutfits(response.data);
+            setCurrentOutfitIndex(0); 
+            if (response.data.length > 0) {
+                updateOutfitImages(response.data[0]);
+            }
         } catch (err) {
             console.log('Error fetching outfit data:', err);
         }
     };
+
+    const updateOutfitImages = (outfit) => {
+        switch (outfit.dressType) {
+            case 'Shirt':
+                setShirt(outfit.image);
+                break;
+            case 'Pant':
+                setPant(outfit.image);
+                break;
+            default:
+                setAccessory(outfit.image);
+                break;
+        }
+    };
+
+    const handleNext = () => {
+        if (currentOutfitIndex < outfits.length - 1) {
+            const nextIndex = currentOutfitIndex + 1;
+            setCurrentOutfitIndex(nextIndex);
+            updateOutfitImages(outfits[nextIndex]);
+        }
+    };
+
+    const handleBack = () => {
+        if (currentOutfitIndex > 0) {
+            const prevIndex = currentOutfitIndex - 1;
+            setCurrentOutfitIndex(prevIndex);
+            updateOutfitImages(outfits[prevIndex]);
+        }
+    };
+
+    const currentOutfit = outfits[currentOutfitIndex] || {};
 
     return (
         <div>
@@ -77,11 +103,11 @@ function Mainpage() {
                     </div>
                     <div id='bot-msg'>
                         <h4>I've found your favourite <br /> outfit. Wanna check it out?</h4>
-                        <button id='bot-msg-btn'>Your favourite outfit</button>
+                        <button id='bot-msg-btn' onClick={fetchOutfit}>Your favourite outfit</button>
                     </div>
                     <button onClick={fetchOutfit} id='output-btn'>Find outfit</button>
                 </div>
-                <button className='add-new'onClick={addNew}>Add new dress</button>
+                <button className='add-new' onClick={addNew}>Add new dress</button>
                 <div className='image-display'>
                     <div id='shirt'>
                         <img id='shirt-img' className='images' src={`http://localhost:3000/images/${shirt}`} alt="Shirt" />
@@ -94,8 +120,8 @@ function Mainpage() {
                     </div>
                 </div>
                 <div className='buttons'>
-                    <button id='back'>← Back</button>
-                    <button id='next'>Next →</button>
+                    <button id='back' onClick={handleBack} disabled={currentOutfitIndex === 0}>← Back</button>
+                    <button id='next' onClick={handleNext} disabled={currentOutfitIndex === outfits.length - 1}>Next →</button>
                     <button id='select'>Select this outfit</button>
                 </div>
             </div>
