@@ -114,6 +114,22 @@
     top: 100px;
     left: -120px;
 }
+#output-btn{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    left: 120px;
+    top: -150px;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #87B4C2;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+    transition: all 0.3s ease;
+    margin-left: 2px;
+}
 .images{
     height: 250px;
     width: 300px;
