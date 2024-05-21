@@ -1,80 +1,37 @@
-// import React, { useState } from "react";
-// import axios from 'axios';
-// import cloud from "./assets/cloud.png";
-// import sun from "./assets/sun.png"
-// import snowflake from "./assets/snowflake.png"
-// import arrow from "./assets/UpwardArrow.png";
-// import "./climate.css";
-
-// function Climate() {
-//     const [weather, setWeather] = useState(null);
-//     const API_KEY = '74e35d0f002ac2762c193dba8a223c69';
-//     const CITY_NAME = 'Bangalore';
-
-//     const fetchClimate = async () => {
-//         try {
-//             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}`);
-//             // console.log(response.data)
-//             setWeather(response.data);
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     }
-  
-//     fetchClimate()
-//     return (
-//         <div>
-//             <h1 className="heading">Try out some other <br /> features</h1>
-//             <div className="climate-texts">
-//                 <h1>Select your outfit <br /> based on </h1>
-//                 <h2>Weather</h2>
-//                 <button className="show-outfit-btn" >Show outfit</button>
-//                 <div className="climate-images">
-//                     <p className="climate-now" id="climate-text1">{weather ? `${Math.round(weather.main.temp - 273.15)}°C` : '0°C'}</p>
-//                     <img src={cloud} alt="" />
-//                 </div>
-//             </div>
-//             <div className="container2">
-//                 <h1>Your wardrobe</h1>
-//                 <div className="climate-info" >
-//                     <p className="climate-now" id="climate-text2">{weather ? `${Math.round(weather.main.temp - 273.15)}°C` : '0°C'}</p>
-//                     <img id="climate-img" src={cloud} alt="" />
-//                 </div>
-//                 <div className="outfit-display">
-//                     <div className="shirt">
-//                         {/* Render shirt component here */}
-//                     </div>
-//                     <div className="pant">
-//                         {/* Render pant component here */}
-//                     </div>
-//                     <div className="accessory">
-//                         {/* Render accessory component here */}
-//                     </div>
-//                 </div>
-//                 <div className="buttons2">
-//                     <button className="back2">← Back</button>
-//                     <button className="next2">Next →</button>
-//                     <button className="add-new-dress">Add new Dress <img src={arrow} height='10px' alt="" /></button>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Climate;
-
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import cloud from "./assets/cloud.png";
 import sun from "./assets/sun.png";
 import snowflake from "./assets/snowflake.png";
 import arrow from "./assets/UpwardArrow.png";
+import Cookies from 'js-cookie';
 import "./climate.css";
 
 function Climate() {
     const [weather, setWeather] = useState(null);
+    const [shirt, setShirt] = useState('');
+    const [pant, setPant] = useState('');
+    const [accessory, setAccessory] = useState('');
+    const [occasion, setOccasion] = useState('');
+    const [userName, setUserName] = useState('');
+    const [outfits, setOutfits] = useState([]);
+    const [currentOutfitIndex, setCurrentOutfitIndex] = useState(0);
+
     const API_KEY = '74e35d0f002ac2762c193dba8a223c69';
     const CITY_NAME = 'Bangalore';
+
+    useEffect(() => {
+        const fetchUsername = () => {
+            const user = Cookies.get('userName');
+            if (user) {
+                setUserName(user);
+                console.log('Username fetched from cookies:', user);
+            } else {
+                console.log('User not found in cookies');
+            }
+        };
+        fetchUsername();
+    }, []);
 
     const fetchClimate = async () => {
         try {
@@ -83,7 +40,7 @@ function Climate() {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     useEffect(() => {
         fetchClimate();
@@ -97,7 +54,71 @@ function Climate() {
         } else {
             return cloud;
         }
-    }
+    };
+
+    const getWeatherDescription = (icon) => {
+        if (icon === sun) {
+            return 'sun';
+        } else if (icon === snowflake) {
+            return 'winter';
+        } else {
+            return 'rainy';
+        }
+    };
+
+    useEffect(() => {
+        if (weather) {
+            const temperatureCelsius = Math.round(weather.main.temp - 273.15);
+            const weatherIcon = getWeatherIcon(temperatureCelsius);
+            const weatherDescription = getWeatherDescription(weatherIcon);
+            setOccasion(weatherDescription);
+        }
+    }, [weather]);
+
+    const fetchOutfit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
+            console.log('Outfit response:', response.data);
+            setOutfits(response.data);
+            setCurrentOutfitIndex(0);
+            if (response.data.length > 0) {
+                updateOutfitImages(response.data[0]);
+            }
+        } catch (err) {
+            console.log('Error fetching outfit data:', err);
+        }
+    };
+
+    const updateOutfitImages = (outfit) => {
+        switch (outfit.dressType) {
+            case 'Shirt':
+                setShirt(outfit.image);
+                break;
+            case 'Pant':
+                setPant(outfit.image);
+                break;
+            default:
+                setAccessory(outfit.image);
+                break;
+        }
+    };
+
+    const handleNext = () => {
+        if (currentOutfitIndex < outfits.length - 1) {
+            const nextIndex = currentOutfitIndex + 1;
+            setCurrentOutfitIndex(nextIndex);
+            updateOutfitImages(outfits[nextIndex]);
+        }
+    };
+
+    const handleBack = () => {
+        if (currentOutfitIndex > 0) {
+            const prevIndex = currentOutfitIndex - 1;
+            setCurrentOutfitIndex(prevIndex);
+            updateOutfitImages(outfits[prevIndex]);
+        }
+    };
 
     const temperatureCelsius = weather ? Math.round(weather.main.temp - 273.15) : 0;
     const weatherIcon = getWeatherIcon(temperatureCelsius);
@@ -108,7 +129,7 @@ function Climate() {
             <div className="climate-texts">
                 <h1>Select your outfit <br /> based on </h1>
                 <h2>Weather</h2>
-                <button className="show-outfit-btn">Show outfit</button>
+                <button className="show-outfit-btn" onClick={fetchOutfit}>Show outfit</button>
                 <div className="climate-images">
                     <p className="climate-now" id="climate-text1">{`${temperatureCelsius}°C`}</p>
                     <img src={weatherIcon} alt="weather icon" />
@@ -122,18 +143,18 @@ function Climate() {
                 </div>
                 <div className="outfit-display">
                     <div className="shirt">
-                        {/* Render shirt component here */}
+                        <img className='images' src={`http://localhost:3000/images/${shirt}`} alt="Shirt" />
                     </div>
                     <div className="pant">
-                        {/* Render pant component here */}
+                        <img className='images' src={`http://localhost:3000/images/${pant}`} alt="Pant" />
                     </div>
                     <div className="accessory">
-                        {/* Render accessory component here */}
+                        <img className='images' src={`http://localhost:3000/images/${accessory}`} alt="Accessory" />
                     </div>
                 </div>
                 <div className="buttons2">
-                    <button className="back2">← Back</button>
-                    <button className="next2">Next →</button>
+                    <button className="back2" onClick={handleBack}>← Back</button>
+                    <button className="next2" onClick={handleNext}>Next →</button>
                     <button className="add-new-dress">Add new Dress <img src={arrow} height='10px' alt="" /></button>
                 </div>
             </div>

@@ -81,6 +81,8 @@ function Setuppage() {
                             <option value="party">Party</option>
                             <option value="wedding">Wedding</option>
                             <option value="shopping">Shopping</option>
+                            <option value="winter">Winter</option>
+                            <option value="rainy">Rainy</option>
                             <option value="others">Others</option>
                         </select>
                     </div>
