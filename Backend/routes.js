@@ -3,6 +3,8 @@ const multer = require('multer');
 const path = require('path');
 const router = express.Router();
 const Outfit = require('./schema'); 
+const Joi = require('joi')
+const validateOutfit = require('./validator');
 
 
 const storage = multer.diskStorage({
@@ -56,21 +58,30 @@ router.get('/outfits/:userName/:occasion', (req, res) => {
 
 //for uploading the outfit
 
-router.post('/upload', upload.single('file'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).send({ error: "No file provided" });
+router.post('/upload', upload.single('file'), async (req, res) => {
+    const { userName, dressType, occasion } = req.body;
+    const file = req.file;
+
+    const payload = { userName, file, dressType, occasion };
+
+    try {
+        const { error } = validateOutfit(payload);
+        if (error) {
+            return res.status(400).json({ error: error.details.map(detail => detail.message) });
+        }
+
+        const newOutfit = new Outfit({
+            userName,
+            image: file.path,  // Assuming you want to save the file path
+            dressType,
+            occasion
+        });
+
+        const savedOutfit = await newOutfit.save();
+        res.json(savedOutfit);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
-    Outfit.create({
-        userName: req.body.userName,
-        dressType: req.body.dressType,
-        occasion: req.body.occasion, 
-        image: req.file.filename
-    })
-    .then(result => res.status(201).json(result))
-    .catch(err => {
-        console.error(err);
-        res.status(500).send({ error: "Error creating outfit" });
-    });
 });
 
 router.put('/updateoutfit/:id', (req, res) => {

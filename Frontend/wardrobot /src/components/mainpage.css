@@ -101,7 +101,6 @@
     left: 390px;
     bottom: 200px;
     background-color: #ffffff;
-    height: 220px;
     height: 250px;
     width: 300px;
     /* border: 1px solid black; */
@@ -149,6 +148,10 @@
     transition: all 0.3s ease;
     margin-left: 2px;
 }
+#pant{
+    position: relative;
+    right: 10px;
+}
 #what-dress{
     position: relative;
     bottom: 20px;
@@ -195,18 +198,7 @@
         background-color: #E6FFF3;
         border: none;
     }
-    #acessory{
-        left: 10px;
-        top: 100px;
-    }
-    #shirt{
-        top: 100px;
-        left: 460px;
-    }
-    #pant{
-        bottom: -260px;
-        left: 230px;
-    }
+   
     #bot-msg{
         position: relative;
         top: -5px;
@@ -259,5 +251,57 @@
         transition: all 0.3s ease;
         margin-left: 2px;
         margin-top: 120px;
+    }
+    #shirt,#pant,#accessory{
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        left: 265px;
+        bottom: -100px;
+        background-color: #ffffff;
+        height: 10px;
+        width: 15px;
+        /* border: 1px solid black; */
+        box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
+        border-radius: 15px;
+        margin-left: 40px;
+    }
+    #accessory{
+        position: relative;
+        top: 240px;
+        left: 30px;
+        border: 1px solid black;
+        height: 10px;
+        width: 15px;
+    }
+    #pant{
+        position: relative;
+        left: 250px;
+    }
+    .images{
+        display: flex;
+        justify-content: center;
+        position: relative;
+        left: 70px;
+        bottom: 60px;
+        height: 130px;
+        width: 160px;
+        border-radius: 10px;
+    }
+    #output-btn{
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        left: 120px;
+        top: -150px;
+        font-size: 1rem;
+        border-radius: 15px;
+        border: none;
+        background-color: #87B4C2;
+        color: white;
+        padding: 5px 15px 5px 15px;
+        box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+        transition: all 0.3s ease;
+        margin-left: 2px;
     }
 }

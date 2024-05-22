@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const dataSchema = new mongoose.Schema({
     userName:{
         type: String,
-        required: true
+        required: false
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     dressType: {
         type: String,
