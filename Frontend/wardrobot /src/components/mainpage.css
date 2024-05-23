@@ -163,7 +163,7 @@
 @media (max-width: 480px){
     .container1{
         position: relative;
-        margin-left: 1px;
+        margin-left: 15px;
         bottom: -30px;
         height: 600px;
         width: 350px;
@@ -223,7 +223,7 @@
     }
     #select{
         position: relative;
-        top: 40px;
+        top: 30px;
         right: 25px;
         font-size: 0.6rem;
         border-radius: 15px;
@@ -239,7 +239,7 @@
         display: flex;
         justify-content: flex-end;
         position: relative;
-        top: 130px;
+        top: 110px;
         left: 20px;
         font-size: 0.6rem;
         border-radius: 15px;
@@ -292,14 +292,14 @@
         display: flex;
         justify-content: flex-end;
         position: relative;
-        left: 120px;
-        top: -150px;
-        font-size: 1rem;
+        left: 35px;
+        top: -160px;
+        font-size: 0.6rem;
         border-radius: 15px;
         border: none;
         background-color: #87B4C2;
         color: white;
-        padding: 5px 15px 5px 15px;
+        padding: 2.5px 7px 2.5px 7px;
         box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
         transition: all 0.3s ease;
         margin-left: 2px;
