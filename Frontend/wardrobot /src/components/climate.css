@@ -279,4 +279,27 @@
         box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
         transition: all 0.3s ease;
     }
+    .outfit-display{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        bottom: 500px;    
+    }
+    .outfit-display div{
+        position: relative;
+        left: -90px;
+        /* padding: 120px 150px 120px 150px; */
+        border-radius: 15px;
+        box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
+        margin-bottom: 50px;
+        height: 10px;
+        width: 20px;
+    }
+    .outfit-display .accessory{
+        position: relative;
+        left: 90px;
+        top: 160px;
+    }
 }
