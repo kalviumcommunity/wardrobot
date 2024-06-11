@@ -17,7 +17,23 @@ function Mainpage() {
     const [occasion, setOccasion] = useState('');
     const [userName, setUserName] = useState('');
     const navigate = useNavigate();
-
+    accessory.replace('public/images/', '');
+    pant.replace('public/images/', '');
+    shirt.replace('public/images/', '');
+    const fetchOutfit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
+            console.log('Outfit response:', response.data);
+            setOutfits(response.data);
+            setCurrentOutfitIndex(0); 
+            if (response.data.length > 0) {
+                updateOutfitImages(response.data[0]);
+            }
+        } catch (err) {
+            console.log('Error fetching outfit data:', err);
+        }
+    };
     useEffect(() => {
         const fetchUsername = () => {
             const user = Cookies.get('userName');
@@ -35,20 +51,7 @@ function Mainpage() {
         navigate('/setup1');
     };
 
-    const fetchOutfit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
-            console.log('Outfit response:', response.data);
-            setOutfits(response.data);
-            setCurrentOutfitIndex(0); 
-            if (response.data.length > 0) {
-                updateOutfitImages(response.data[0]);
-            }
-        } catch (err) {
-            console.log('Error fetching outfit data:', err);
-        }
-    };
+   
 
     const updateOutfitImages = (outfit) => {
         switch (outfit.dressType) {
