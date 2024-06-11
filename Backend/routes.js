@@ -12,13 +12,11 @@ const storage = multer.diskStorage({
         cb(null, 'public/images'); 
     },
     filename: (req, file, cb) => {
-        cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
+        cb(null, Date.now() + path.extname(file.originalname)); // Appending extension
     }
 });
 
-const upload = multer({
-    storage: storage
-});
+const upload = multer({ storage });
 //For getting entier outfit collection
 router.get('/outfits', (req, res) => {
     Outfit.find()
@@ -58,11 +56,40 @@ router.get('/outfits/:userName/:occasion', (req, res) => {
 
 //for uploading the outfit
 
+// router.post('/upload', upload.single('file'), async (req, res) => {
+//     const { userName, dressType, occasion } = req.body;
+//     const file = req.file;
+
+//     const payload = { userName, file, dressType, occasion };
+
+//     try {
+//         const { error } = validateOutfit(payload);
+//         if (error) {
+//             return res.status(400).json({ error: error.details.map(detail => detail.message) });
+//         }
+
+//         const newOutfit = new Outfit({
+//             userName,
+//             image: file.path,  // Assuming you want to save the file path
+//             dressType,
+//             occasion
+//         });
+
+//         const savedOutfit = await newOutfit.save();
+//         res.json(savedOutfit);
+//     } catch (err) {
+//         res.status(500).json({ error: err.message });
+//     }
+// });
+
 router.post('/upload', upload.single('file'), async (req, res) => {
     const { userName, dressType, occasion } = req.body;
     const file = req.file;
 
-    const payload = { userName, file, dressType, occasion };
+    // Remove 'public/images/' from the file path
+    const filePath = file.path.replace('public/images/', '');
+
+    const payload = { userName, file: filePath, dressType, occasion };
 
     try {
         const { error } = validateOutfit(payload);
@@ -72,7 +99,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
         const newOutfit = new Outfit({
             userName,
-            image: file.path,  // Assuming you want to save the file path
+            image: filePath, // Save the cleaned file path
             dressType,
             occasion
         });
