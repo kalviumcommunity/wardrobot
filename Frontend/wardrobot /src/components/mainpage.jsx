@@ -113,13 +113,13 @@ function Mainpage() {
                 <button className='add-new' onClick={addNew}>Add new dress</button>
                 <div className='image-display'>
                     <div id='shirt'>
-                        <img id='shirt-img' className='images' src={`http://localhost:3000/images/${shirt}`} alt="Shirt" />
+                        <img id='shirt-img' className='images' src={`http://localhost:3000/images/${shirt}`} alt="" />
                     </div>
                     <div id='pant'>
-                        <img id='pant-img' className='images' src={`http://localhost:3000/images/${pant}`} alt="Pant" />
+                        <img id='pant-img' className='images' src={`http://localhost:3000/images/${pant}`} alt="" />
                     </div>
                     <div id='accessory'>
-                        <img id='acess-img' className='images' src={`http://localhost:3000/images/${accessory}`} alt="Accessory" />
+                        <img id='acess-img' className='images' src={`http://localhost:3000/images/${accessory}`} alt="" />
                     </div>
                 </div>
                 <div className='buttons'>
