@@ -98,6 +98,39 @@
     box-shadow: 0 2px 4px rgba(31, 31, 31, 0.686); 
     transform: translateY(2px);
 }
+.current-occasions{
+    position: absolute;
+    left: 80px;
+    display: flex;
+    width: 350px;
+    overflow-x: scroll;
+}
+.current-occasions li{
+    position: relative;
+    left: 150px;
+    font-size: 0.7rem;
+    background: none;
+}
+.new-occassion-input{
+    position: absolute;
+    left: 50px;
+    top: 110px;
+}
+.new-occassion-input input{
+    background-color: antiquewhite;
+    border-radius: 5px;
+    border: none;
+    height: 25px;
+    width: 250px;
+
+}
+.animated-item h4{
+    position: relative;
+    left: 50px;
+    top: 45px;
+    font-size: 1.3rem;
+    font-weight: 450;
+}
 @media (max-width: 480px){
     .user-form{
         display: flex;

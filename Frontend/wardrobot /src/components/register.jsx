@@ -32,7 +32,7 @@ function Register() {
         e.preventDefault();
         setLoading(true); 
         try {
-            const userData = await axios.post('https://wardrobot-22.onrender.com/users/userupload', { userName, password });
+            const userData = await axios.post('http://localhost:3000/users/userupload', { userName, password });
             console.log(userData);
             navigate('/login');
         } catch (err) {
