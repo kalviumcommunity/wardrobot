@@ -27,7 +27,7 @@ function Login() {
         e.preventDefault();
         setLoading(true);
         try {
-            const userData = await axios.get(`https://wardrobot-22.onrender.com/users/getuserbyUsername/${userName}`);
+            const userData = await axios.get(`http://localhost:3000/users/getuserbyUsername/${userName}`);
             const fetchedPassword = userData.data[0].password;
             console.log(fetchedPassword);
             if (fetchedPassword === password) {

@@ -8,9 +8,11 @@ import shirt2 from "./assets/shirt2.png";
 import './setuppage.css';
 
 function Setuppage() {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const [dressType, setDressType] = useState('');
     const [occasion, setOccasion] = useState('');
+    const [occasions, setOccasions] = useState([]);
+    const [newOccasion, setNewOccasion] = useState('');
 
     useEffect(() => {
         const animatedItems = document.querySelectorAll('.animated-item');
@@ -25,6 +27,8 @@ function Setuppage() {
             select.style.opacity = '1';
             select.style.transform = 'translateY(0)';
         });
+        const storedOccasions = JSON.parse(localStorage.getItem('occasions')) || ["Party", "Wedding", "Shopping", "Winter", "Rainy", "Others"];
+        setOccasions(storedOccasions);
     }, []);
 
     const dataId = localStorage.getItem('recent_dataset');
@@ -32,7 +36,7 @@ function Setuppage() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        
+
         if (!dataId) {
             console.error("No dataset ID found in localStorage.");
             return;
@@ -48,7 +52,22 @@ function Setuppage() {
         } catch (err) {
             console.error("Error updating dataset", err);
         }
-    }
+    };
+
+    const handleAddOccasion = () => {
+        if (newOccasion && !occasions.includes(newOccasion)) {
+            const updatedOccasions = [...occasions, newOccasion];
+            setOccasions(updatedOccasions);
+            setNewOccasion('');
+            localStorage.setItem('occasions', JSON.stringify(updatedOccasions));
+        }
+    };
+
+    const handleDeleteOccasion = (occasionToDelete) => {
+        const updatedOccasions = occasions.filter(occ => occ !== occasionToDelete);
+        setOccasions(updatedOccasions);
+        localStorage.setItem('occasions', JSON.stringify(updatedOccasions));
+    };
 
     return (
         <div>
@@ -78,13 +97,33 @@ function Setuppage() {
                         <br />
                         <select value={occasion} onChange={e => setOccasion(e.target.value)} className="animated-select">
                             <option value="">Select occasion</option>
-                            <option value="party">Party</option>
-                            <option value="wedding">Wedding</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="winter">Winter</option>
-                            <option value="rainy">Rainy</option>
-                            <option value="others">Others</option>
+                            {occasions.map((occ, index) => (
+                                <option key={index} value={occ.toLowerCase()}>{occ}</option>
+                            ))}
                         </select>
+                        <br />
+                        <div className='new-occassion-input'>
+                            <input 
+                                type="text" 
+                                value={newOccasion} 
+                                onChange={e => setNewOccasion(e.target.value)} 
+                                placeholder="Add new occasion" 
+                                className="animated-item"
+                            />
+                            <button type="button" onClick={handleAddOccasion} className="animated-item">
+                                + Add Occasion
+                            </button>
+                        </div>
+                        <div className="animated-item">
+                            <h4>Current Occasions:</h4>
+                            <ul className='current-occasions'>
+                                {occasions.map((occ, index) => (
+                                    <li key={index}>
+                                        {occ} <button onClick={() => handleDeleteOccasion(occ)}>Delete</button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                     <button className="add-wardobe animated-item" type="submit" onClick={handleClick}>
                         Add to wardrobe
@@ -94,5 +133,4 @@ function Setuppage() {
         </div>
     );
 }
-
 export default Setuppage;
