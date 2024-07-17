@@ -35,7 +35,8 @@ function Homepage() {
                 <h2 className='welcome-text animate__animated animate__fadeInRight'>Welcome back {username}!</h2>
                 <h1 className='select animate__animated animate__fadeInRight'>Let's select <br /> your</h1>
                 <h1 className='outfit animate__animated animate__fadeInRight'>Outfit</h1>
-                <button className='add-wardobe3' onClick={handleClick} type='submit'>Go to wardrobe <img src={upwardArrow} alt="" id='upward-arrow2' /></button>
+                <button className='add-wardobe3' onClick={handleClick} type='submit'>Select your outfit<img src={upwardArrow} alt="" id='upward-arrow2' /></button>
+                <button className='add-wardobe4' onClick={()=>navigate('/wardrobe')}>Go to Wardrobe <img src={upwardArrow} alt="" id='upward-arrow2' /></button>
             </div>
         </div>
     );

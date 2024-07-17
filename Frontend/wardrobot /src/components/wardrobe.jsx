@@ -1,10 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
 import Navbar from "./navbars";
 import logo from "./assets/logo.png";
 import ellipse from "./assets/Ellipse.png";
-import './wardrobe.css'
-const Wardrobe =()=>{
-    return(
+import './wardrobe.css';
+import Cookies from 'js-cookie';
+
+const Wardrobe = () => {
+    const [occasions, setOccasions] = useState([]);
+    const [wardrobe, setWardrobe] = useState({});
+
+    useEffect(() => {
+        const storedOccasions = JSON.parse(localStorage.getItem('occasions')) || [];
+        const userName = Cookies.get('userName');
+        if (userName && storedOccasions.length > 0) {
+            const fetchOutfits = async () => {
+                const outfitsData = {};
+                const validOccasions = [];
+                for (const occasion of storedOccasions) {
+                    try {
+                        const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion.toLowerCase()}`);
+                        if (response.data.length > 0) {
+                            outfitsData[occasion] = response.data;
+                            validOccasions.push(occasion);
+                        }
+                    } catch (err) {
+                        console.error(`Error fetching outfits for ${occasion}:`, err);
+                    }
+                }
+                setWardrobe(outfitsData);
+                setOccasions(validOccasions);
+            };
+
+            fetchOutfits();
+        }
+    }, []);
+
+    const deleteOutfit = async (occasion, outfitId) => {
+        try {
+            await axios.delete(`http://localhost:3000/api/deleteOutfit/${outfitId}`);
+            const updatedWardrobe = { ...wardrobe };
+            updatedWardrobe[occasion] = updatedWardrobe[occasion].filter(outfit => outfit._id !== outfitId);
+            if (updatedWardrobe[occasion].length === 0) {
+                delete updatedWardrobe[occasion];
+                setOccasions(occasions.filter(occ => occ !== occasion));
+            }
+            setWardrobe(updatedWardrobe);
+        } catch (err) {
+            console.error(`Error deleting outfit:`, err);
+        }
+    };
+
+    return (
         <div>
             <img src={logo} alt="Logo" id="logo2" />
             <img src={ellipse} alt="Ellipse" id="ellipse" />
@@ -12,75 +59,23 @@ const Wardrobe =()=>{
             <div>
                 <div className='container2'>
                     <h1>Your Wardrobe</h1>
-                    <h3 className="occasions-wardrobe">Wedding</h3>
-                    <div className="sub-containers">
-                        <div className="images-holder">
-
+                    {occasions.map((occasion, index) => (
+                        <div key={index}>
+                            <h3 className="occasions-wardrobe">{occasion}</h3>
+                            <div className="sub-containers">
+                                {wardrobe[occasion]?.map((outfit, idx) => (
+                                    <div className="images-holder" key={idx}>
+                                        <img src={`http://localhost:3000/images/${outfit.image}`} alt={outfit.dressType} className="outfit-image" />
+                                        <button className="deleteoutfitbutton" onClick={() => deleteOutfit(occasion, outfit._id)}>Delete Dress</button>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                    </div>
-
-                    <h3 className="occasions-wardrobe">Wedding</h3>
-                    <div className="sub-containers">
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                    </div>
-
-
-                    <h3 className="occasions-wardrobe">Wedding</h3>
-                    <div className="sub-containers">
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                        <div className="images-holder">
-
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>
-    )
-}
-export default Wardrobe
+    );
+};
+
+export default Wardrobe;
