@@ -5,6 +5,9 @@ import logo from "./assets/logo.png";
 import ellipse from "./assets/Ellipse.png";
 import './wardrobe.css';
 import Cookies from 'js-cookie';
+import heart from "./assets/Heart.png";
+import Delete from "./assets/Remove.png";
+import Fav from "./assets/Favorite.png"
 
 const Wardrobe = () => {
     const [occasions, setOccasions] = useState([]);
@@ -92,13 +95,15 @@ const Wardrobe = () => {
                                 {wardrobe[occasion]?.map((outfit, idx) => (
                                     <div className="images-holder" key={idx}>
                                         <img src={`http://localhost:3000/images/${outfit.image}`} alt={outfit.dressType} className="outfit-image" />
-                                        <button className="deleteoutfitbutton" onClick={() => deleteOutfit(occasion, outfit._id)}>Delete Dress</button>
+                                        <button className="deleteoutfitbutton" onClick={() => deleteOutfit(occasion, outfit._id)}>Delete Dress <img src={Delete}  /> </button>
                                         <button 
                                             style={{backgroundColor: isFav[outfit._id] ? 'white' : 'red',color:isFav[outfit._id] ? 'red' : 'white'}}
                                             onClick={(e) => toggleFavourite(e, outfit._id)} 
                                             className="fav-button"
+                                            
                                         >
-                                            {isFav[outfit._id] ? "Remove from Favourites" : "Add to Favourites"}
+                                            {isFav[outfit._id] ? "Remove Favourites" : "Add to Favourites"}
+                                            <img src={isFav[outfit._id]?heart:Fav} className="heart-img" alt="" />
                                         </button>
                                     </div>
                                 ))}

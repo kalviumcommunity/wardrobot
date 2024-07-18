@@ -15,7 +15,7 @@
     bottom: 100px;
     border-radius: 15px;
     box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.188);
-    height: 300px;
+    height: 320px;
     width: 95%;
     display: flex;
     align-items: center;
@@ -49,14 +49,15 @@
 }
 .deleteoutfitbutton{
     position: absolute;
-    left: 10px;
-    top: 250px;
+    left: 2px;
+    top: 255px;
     color: rgb(255, 0, 0);
     border: 1px solid red;
     border-radius: 5px;
     background: none;
     font-weight: 600;
     font-size: 0.8rem;
+    width: 120px;
 }
 .deleteoutfitbutton:hover{
     background-color: #d46565;
@@ -70,14 +71,28 @@
 }
 .fav-button{
     position: absolute;
-    left: 160px;
-    top: 250px;
+    left: 130px;
+    top: 255px;
     color: rgb(255, 0, 0);
     border: 1px solid red;
     border-radius: 5px;
     background: none;
     font-weight: 600;
     font-size: 0.8rem;
+    width: 160px;
+}
+.fav-button img{
+    position: relative;
+    left: 5px;
+    top: 3px;
+    height: 15px;
+    width: 15px;
+}
+.deleteoutfitbutton img{
+    position: relative;
+    top: 3px;
+    height: 15px;
+    width: 15px;
 }
 /* .fav-button:hover{
     background-color: #d46565;

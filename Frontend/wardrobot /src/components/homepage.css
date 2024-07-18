@@ -57,7 +57,7 @@
     font-size: 1.2rem;
     border-radius: 15px;
     border: none;
-    background-color: #BAC287;
+    background-color: #C28795;
     color: white;
     padding: 5px 15px 5px 15px;
     box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
@@ -73,7 +73,23 @@
     font-size: 1.2rem;
     border-radius: 15px;
     border: none;
-    background-color: #C28795;
+    background-color: #87B4C2;
+    color: white;
+    padding: 5px 15px 5px 15px;
+    box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);
+    transition: all 0.3s ease;
+    margin-left: 2px;
+}
+.add-wardobe5{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 470px;
+    right: 230px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    background-color: #BAC287;
     color: white;
     padding: 5px 15px 5px 15px;
     box-shadow: -2px 4px 8px rgba(31, 31, 31, 0.489);

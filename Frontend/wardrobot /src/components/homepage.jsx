@@ -6,6 +6,7 @@ import ellipse from "./assets/Ellipse.png";
 import shirt3 from "./assets/shirt3.png"
 import upwardArrow from "./assets/UpwardArrow.png";
 import Cookies from 'js-cookie';
+import Addimg from './assets/Add.png'
 import './setuppage1.css';
 import './homepage.css';
 
@@ -37,6 +38,7 @@ function Homepage() {
                 <h1 className='outfit animate__animated animate__fadeInRight'>Outfit</h1>
                 <button className='add-wardobe3' onClick={handleClick} type='submit'>Select your outfit<img src={upwardArrow} alt="" id='upward-arrow2' /></button>
                 <button className='add-wardobe4' onClick={()=>navigate('/wardrobe')}>Go to Wardrobe <img src={upwardArrow} alt="" id='upward-arrow2' /></button>
+                <button className='add-wardobe5' onClick={()=>navigate('/setup1')}>Add New Dress <img src={Addimg} alt="" id='upward-arrow2' /></button>
             </div>
         </div>
     );
