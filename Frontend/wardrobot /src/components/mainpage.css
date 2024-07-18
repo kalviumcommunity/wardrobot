@@ -86,7 +86,7 @@
 }
 .image-display{
     position: relative;
-    right: 200px;
+    left: 500px;
     bottom: 450px;
     display: flex;
     align-items: center;
@@ -115,7 +115,7 @@
     position: relative;
     display: flex;
     justify-content: flex-end;
-    left: 390px;
+    left:-300px;
     bottom: 200px;
     background-color: #ffffff;
     height: 250px;
@@ -128,7 +128,7 @@
 #accessory{
     position: relative;
     top: 100px;
-    left: -120px;
+    left: -820px;
 }
 #output-btn{
     display: flex;

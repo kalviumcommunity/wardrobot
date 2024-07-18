@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 const Wardrobe = () => {
     const [occasions, setOccasions] = useState([]);
     const [wardrobe, setWardrobe] = useState({});
+    const [isFav, setIsFav] = useState({});
 
     useEffect(() => {
         const storedOccasions = JSON.parse(localStorage.getItem('occasions')) || [];
@@ -16,6 +17,7 @@ const Wardrobe = () => {
         if (userName && storedOccasions.length > 0) {
             const fetchOutfits = async () => {
                 const outfitsData = {};
+                const favStatus = {};
                 const validOccasions = [];
                 for (const occasion of storedOccasions) {
                     try {
@@ -23,12 +25,16 @@ const Wardrobe = () => {
                         if (response.data.length > 0) {
                             outfitsData[occasion] = response.data;
                             validOccasions.push(occasion);
+                            response.data.forEach(outfit => {
+                                favStatus[outfit._id] = outfit.favOutfit || false;
+                            });
                         }
                     } catch (err) {
                         console.error(`Error fetching outfits for ${occasion}:`, err);
                     }
                 }
                 setWardrobe(outfitsData);
+                setIsFav(favStatus);
                 setOccasions(validOccasions);
             };
 
@@ -51,6 +57,26 @@ const Wardrobe = () => {
         }
     };
 
+    const toggleFavourite = async (e, dataId) => {
+        e.preventDefault();
+
+        if (!dataId) {
+            console.log("no id");
+            return;
+        }
+        
+        try {
+            const currentFavStatus = isFav[dataId] || false;
+            await axios.put(`http://localhost:3000/api/updateoutfit/${dataId}`, {
+                favOutfit: !currentFavStatus
+            });
+            setIsFav(prevState => ({ ...prevState, [dataId]: !currentFavStatus }));
+            console.log("fav status toggled");
+        } catch (err) {
+            console.log("error occurred", err);
+        }
+    };
+
     return (
         <div>
             <img src={logo} alt="Logo" id="logo2" />
@@ -67,6 +93,13 @@ const Wardrobe = () => {
                                     <div className="images-holder" key={idx}>
                                         <img src={`http://localhost:3000/images/${outfit.image}`} alt={outfit.dressType} className="outfit-image" />
                                         <button className="deleteoutfitbutton" onClick={() => deleteOutfit(occasion, outfit._id)}>Delete Dress</button>
+                                        <button 
+                                            style={{backgroundColor: isFav[outfit._id] ? 'white' : 'red',color:isFav[outfit._id] ? 'red' : 'white'}}
+                                            onClick={(e) => toggleFavourite(e, outfit._id)} 
+                                            className="fav-button"
+                                        >
+                                            {isFav[outfit._id] ? "Remove from Favourites" : "Add to Favourites"}
+                                        </button>
                                     </div>
                                 ))}
                             </div>
