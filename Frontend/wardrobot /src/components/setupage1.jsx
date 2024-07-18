@@ -44,16 +44,18 @@ function Setuppage1() {
         formData.append('file', file);
         formData.append('dressType', 'none');
         formData.append('occasion', 'none');
+        formData.append('timesUsed', 0);
+        formData.append('favOutfit', false);
 
         try {
-            const update = await axios.post('http://localhost:3000/api/upload', formData, {
+            const response = await axios.post('http://localhost:3000/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            console.log('File uploaded successfully:', update);
-            const updatedIdd=update.data._id;
-            localStorage.setItem('recent_dataset',updatedIdd)
+            console.log('File uploaded successfully:', response);
+            const updatedId = response.data._id;
+            localStorage.setItem('recent_dataset', updatedId);
             navigate('/setup');
         } catch (err) {
             console.error('Error uploading file:', err);

@@ -7,9 +7,11 @@ const validator = (schema) => (payload) =>
 // Schema definition
 const outfitSchema = Joi.object({
     userName: Joi.string().required(),
-    file: Joi.any().required(),  // Expecting a file to be present
+    file: Joi.any().required(),
     dressType: Joi.string().required(),
-    occasion: Joi.string().required()
+    occasion: Joi.string().required(),
+    timesUsed: Joi.number(),
+    favOutfit: Joi.boolean()
 });
 
 const validateOutfit = validator(outfitSchema);

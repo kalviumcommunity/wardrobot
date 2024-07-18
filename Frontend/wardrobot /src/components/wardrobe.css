@@ -47,7 +47,7 @@
     justify-content: center;
     /* overflow: hidden; */
 }
-.images-holder button{
+.deleteoutfitbutton{
     position: absolute;
     left: 10px;
     top: 250px;
@@ -58,7 +58,7 @@
     font-weight: 600;
     font-size: 0.8rem;
 }
-.images-holder button:hover{
+.deleteoutfitbutton:hover{
     background-color: #d46565;
     color: white;
 }
@@ -68,3 +68,18 @@
     object-fit: cover;
     border-radius: 15px;
 }
+.fav-button{
+    position: absolute;
+    left: 160px;
+    top: 250px;
+    color: rgb(255, 0, 0);
+    border: 1px solid red;
+    border-radius: 5px;
+    background: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+/* .fav-button:hover{
+    background-color: #d46565;
+    color: white;
+} */

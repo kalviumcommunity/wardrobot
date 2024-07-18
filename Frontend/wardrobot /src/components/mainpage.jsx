@@ -59,6 +59,27 @@ function Mainpage() {
         navigate('/setup1');
     };
 
+    const fetchFavOutfit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.get(`http://localhost:3000/api/favoriteOutfits/${userName}`);
+            console.log('Outfit response:', response.data);
+            if (response.data.length > 0) {
+                setOutfits(response.data);
+                setCurrentOutfitIndex(0);
+                updateOutfitImages(response.data[0]);
+            } else {
+                console.log('No favorite outfits found.');
+                setOutfits([]);
+                setShirt('');
+                setPant('');
+                setAccessory('');
+            }
+        } catch (err) {
+            console.log('Error fetching favorite outfits:', err);
+        }
+    };
+
     const updateOutfitImages = (outfit) => {
         console.log('Updating outfit images:', outfit);
         switch (outfit.dressType) {
@@ -117,12 +138,12 @@ function Mainpage() {
                     </div>
                     <div id='bot-msg'>
                         <h4>I've found your favourite <br /> outfit. Wanna check it out?</h4>
-                        <button id='bot-msg-btn' onClick={fetchOutfit}>Your favourite outfit</button>
+                        <button id='bot-msg-btn' onClick={fetchFavOutfit}>Your favourite outfit</button>
                     </div>
                     <button onClick={fetchOutfit} id='output-btn'>Find outfit</button>
                 </div>
                 <button className='add-new' onClick={addNew}>Add new dress</button>
-                <button className='add-new1' onClick={()=>navigate('/wardrobe')}>Open your wardrobe</button>
+                <button className='add-new1' onClick={() => navigate('/wardrobe')}>Open your wardrobe</button>
                 <div className='image-display'>
                     <div id='shirt'>
                         <img id='shirt-img' className='images' src={shirt ? `http://localhost:3000/images/${shirt}` : ''} alt="" />

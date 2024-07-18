@@ -16,6 +16,16 @@ const dataSchema = new mongoose.Schema({
     occasion: {  
         type: String,
         required: false
+    },
+    timesUsed:{
+        type: Number,
+        required:false,
+        default:0
+    },
+    favOutfit:{
+        type:Boolean,
+        required:false,
+        default:false
     }
 });
 
