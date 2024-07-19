@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config();
 const cors = require('cors');
 const routes = require('./routes');
 const app = express();
+const userAuthRoutes = require('./userAuthRoutes')
 const userRoutes = require('./userRoutes')
 
 
@@ -14,8 +15,8 @@ connectDb();
 
 
 app.use('/api', routes);
-app.use('/users', userRoutes);
-
+app.use('/users', userAuthRoutes);
+app.use('/user',userRoutes)
 app.get('/test', (req, res) => {
     res.send('Server running!');
 });

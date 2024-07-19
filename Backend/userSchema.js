@@ -5,11 +5,19 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    password:{
-        type:String,
-        required:true
-    }
+    profile:{
+        type: String,
+        required: true
+    },
+    followers:[{
+        type: String,
+        required: false
+    }],
+    following:[{
+        type: String,
+        required: false
+    }]
 });
 
-const UserData = mongoose.model('userData',userSchema);
+const UserData = mongoose.model('userProfile',userSchema);
 module.exports = UserData;

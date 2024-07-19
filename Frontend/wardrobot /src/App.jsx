@@ -8,6 +8,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Mainpage from './components/mainpage';
 import Test from "./components/test";
+import UserTest from "./components/usertest"
 import Wardrobe from './components/wardrobe';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
@@ -35,6 +36,7 @@ function App() {
       <Route path="/main" element={<Mainpage />} />
       <Route path="/test" element={<Test />} />
       <Route path="/wardrobe" element={<Wardrobe />} />
+      <Route path="/userTest" element={<UserTest />} />
     </Routes>
   );
 }
