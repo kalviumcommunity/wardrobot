@@ -100,7 +100,9 @@ function Mainpage() {
                 break;
         }
     };
-
+    const UpdateDressCount =(e)=>{
+        
+    }
     const handleNext = () => {
         if (currentOutfitIndex < outfits.length - 1) {
             const nextIndex = currentOutfitIndex + 1;
@@ -158,7 +160,7 @@ function Mainpage() {
                 <div className='buttons'>
                     <button id='back' onClick={handleBack} disabled={currentOutfitIndex === 0}>← Back</button>
                     <button id='next' onClick={handleNext} disabled={currentOutfitIndex === outfits.length - 1}>Next →</button>
-                    <button id='select'>Select this outfit</button>
+                    <button id='select' onClick={UpdateDressCount} >Select this outfit</button>
                 </div>
             </div>
             <Climate />
