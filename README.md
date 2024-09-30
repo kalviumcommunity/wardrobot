@@ -10,6 +10,7 @@
     - Easily choosing the clothes 
     - Suggesting cloths based on the realtime climate
     - Fav cloth of the month feature
+    
 ## Design Link:
 
 [https://www.figma.com/file/capLki3WpCNINSyFZi3Gep/Wardobot?type=design&node-id=0-1&mode=design&t=LiLH9W0U64bAw9Hk-0](https://www.figma.com/file/capLki3WpCNINSyFZi3Gep/Wardobot?type=design&node-id=0-1&mode=design&t=LiLH9W0U64bAw9Hk-0)
@@ -17,4 +18,12 @@
 ## Backend Deployed Link:
 [https://wardrobot-6.onrender.com/test](https://wardrobot-6.onrender.com/test)
 
+deployed_frontend
+[https://wardrobot-6.onrender.com/test](https://wardrobot-6.onrender.com/test)
+
+## Frontend Deployed Link:
+
+[https://wardrobot.netlify.app](https://wardrobot.netlify.app)
+=======
 gersgetgt
+main
