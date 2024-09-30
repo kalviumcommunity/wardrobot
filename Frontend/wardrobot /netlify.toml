@@ -1,0 +1,4 @@
+[build]
+base = "/path-to-your-project"
+publish = "build"
+command = "npm run build"
