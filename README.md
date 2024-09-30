@@ -17,3 +17,7 @@
 ## Backend Deployed Link:
 
 [https://wardrobot-6.onrender.com/test](https://wardrobot-6.onrender.com/test)
+
+## Frontend Deployed Link:
+
+[https://wardrobot.netlify.app](https://wardrobot.netlify.app)
