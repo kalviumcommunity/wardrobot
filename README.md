@@ -10,6 +10,7 @@
     - Easily choosing the clothes 
     - Suggesting cloths based on the realtime climate
     - Fav cloth of the month feature
+    
 ## Design Link:
 
 [https://www.figma.com/file/capLki3WpCNINSyFZi3Gep/Wardobot?type=design&node-id=0-1&mode=design&t=LiLH9W0U64bAw9Hk-0](https://www.figma.com/file/capLki3WpCNINSyFZi3Gep/Wardobot?type=design&node-id=0-1&mode=design&t=LiLH9W0U64bAw9Hk-0)
