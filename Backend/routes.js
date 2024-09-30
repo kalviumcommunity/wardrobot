@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
         cb(null, 'public/images');
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Appending extension
+        cb(null, Date.now() + path.extname(file.originalname)); 
     }
 });
 
@@ -56,6 +56,27 @@ router.get('/outfits/:userName/:occasion', (req, res) => {
             res.status(500).json({ message: 'Server error while retrieving outfits' });
         });
 });
+
+//For fetching the dresses based on the username
+
+router.get('/username/:userName', (req, res) => {
+    const query = {
+        userName: req.params.userName,
+    };
+    Outfit.find(query)
+        .then(outfits => {
+            if (outfits.length > 0) {
+                res.json(outfits);
+            } else {
+                res.status(404).json({ message: 'No users found' });
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(500).json({ message: 'Server error while retrieving outfits' });
+        });
+});
+
 // For fetching favourite dress 
 router.get('/favoriteOutfits/:userName', (req, res) => {
     const query = {

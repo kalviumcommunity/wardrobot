@@ -16,9 +16,42 @@ function Climate() {
     const [userName, setUserName] = useState('');
     const [outfits, setOutfits] = useState([]);
     const [currentOutfitIndex, setCurrentOutfitIndex] = useState(0);
-
+    const [location, setLocation] = useState({ latitude: '', longitude: '' });
+    const [city, setCity] = useState('');
+    
     const API_KEY = '74e35d0f002ac2762c193dba8a223c69';
-    const CITY_NAME = 'Bangalore';
+
+    const getLocation = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+                setLocation({ latitude, longitude });
+                getStateDistrictName(latitude, longitude);
+            });
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    };
+
+    const getStateDistrictName = (latitude, longitude) => {
+        const apiKey = 'fa62c8355b494adf94ace9b592329f47'; 
+        const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
+
+        axios
+            .get(url)
+            .then((response) => {
+                const stateDistrict = response.data.results[0].components.state_district;
+                setCity(stateDistrict);
+                console.log(stateDistrict);
+            })
+            .catch((error) => {
+                console.error('Error fetching the state district name:', error);
+            });
+    };
+
+    useEffect(() => {
+        getLocation();
+    }, []);
 
     useEffect(() => {
         const fetchUsername = () => {
@@ -35,7 +68,7 @@ function Climate() {
 
     const fetchClimate = async () => {
         try {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}`);
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`);
             setWeather(response.data);
         } catch (err) {
             console.log(err);
@@ -43,8 +76,10 @@ function Climate() {
     };
 
     useEffect(() => {
-        fetchClimate();
-    }, []);
+        if (city) {
+            fetchClimate();
+        }
+    }, [city]);
 
     const getWeatherIcon = (temp) => {
         if (temp > 30) {

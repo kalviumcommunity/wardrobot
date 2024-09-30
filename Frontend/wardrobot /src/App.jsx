@@ -10,7 +10,10 @@ import Mainpage from './components/mainpage';
 import Test from "./components/test";
 import UserTest from "./components/usertest"
 import Wardrobe from './components/wardrobe';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import Location from './components/locationfetcher';
+import Home from './components/home';
+import Climate from './components/climate';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,6 +40,8 @@ function App() {
       <Route path="/test" element={<Test />} />
       <Route path="/wardrobe" element={<Wardrobe />} />
       <Route path="/userTest" element={<UserTest />} />
+      <Route path="/location" element={<Location />} />
+      <Route path="/homev2" element={<Home />} />
     </Routes>
   );
 }

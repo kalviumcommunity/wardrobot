@@ -17,6 +17,7 @@ connectDb();
 app.use('/api', routes);
 app.use('/users', userAuthRoutes);
 app.use('/user',userRoutes)
+
 app.get('/test', (req, res) => {
     res.send('Server running!');
 });
