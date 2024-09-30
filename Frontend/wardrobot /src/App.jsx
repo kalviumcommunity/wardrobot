@@ -13,6 +13,7 @@ import Wardrobe from './components/wardrobe';
 import Location from './components/locationfetcher';
 import Home from './components/home';
 import Climate from './components/climate';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 
 function App() {
