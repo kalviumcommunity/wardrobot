@@ -124,11 +124,14 @@
     width: 250px;
 
 }
+.new-occassion-input button{
+    z-index: 1001;
+}
 .animated-item h4{
     position: relative;
     left: 50px;
-    top: 45px;
-    font-size: 1.3rem;
+    top: 65px;
+    font-size: 1rem;
     font-weight: 450;
 }
 @media (max-width: 480px){

@@ -114,7 +114,7 @@ function Setuppage() {
                                 + Add Occasion
                             </button>
                         </div>
-                        <div className="animated-item">
+                        {/* <div className="animated-item">
                             <h4>Current Occasions:</h4>
                             <ul className='current-occasions'>
                                 {occasions.map((occ, index) => (
@@ -123,7 +123,7 @@ function Setuppage() {
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </div> */}
                     </div>
                     <button className="add-wardobe animated-item" type="submit" onClick={handleClick}>
                         Add to wardrobe

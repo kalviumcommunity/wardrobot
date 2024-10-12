@@ -23,7 +23,7 @@ deployed_frontend
 
 ## Frontend Deployed Link:
 
-[https://wardrobot.netlify.app](https://wardrobot.netlify.app)
+[https://wardrobot.onrender.com](https://wardrobot.onrender.com)
 =======
 gersgetgt
 main
