@@ -1,11 +1,15 @@
 const express = require('express')
 const User = require('./userAuthSchema')
 const router = express.Router()
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRECT = process.env.JWT_SECRECT;
 
 router.post('/userupload',(req,res)=>{
     User.create({
         userName:req.body.userName,
-        password:req.body.password
+        password:req.body.password,
+        email:req.body.email
     })
     .then(result => res.status(201).json(result))
     .catch(err=>console.log(err))

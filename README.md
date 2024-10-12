@@ -25,5 +25,3 @@ deployed_frontend
 
 [https://wardrobot.onrender.com](https://wardrobot.onrender.com)
 =======
-gersgetgt
-main

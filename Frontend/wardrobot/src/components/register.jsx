@@ -10,6 +10,7 @@ import Loader from "./Loader.jsx";
 
 function Register() {
     const [userName, setUserName] = useState('');
+    const [email,setEmail]=useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false); 
@@ -41,7 +42,7 @@ function Register() {
         }
         setLoading(true); 
         try {
-            const userData = await axios.post('http://localhost:3000/users/userupload', { userName, password });
+            const userData = await axios.post('http://localhost:3000/users/userupload', { userName,email, password });
             console.log(userData);
             navigate('/login');
         } catch (err) {
@@ -76,6 +77,13 @@ function Register() {
                         onChange={(e) => setUserName(e.target.value)} 
                     />
                     <input 
+                        placeholder="email" 
+                        id="email" 
+                        name="email" 
+                        type="text" 
+                        onChange={(e) => setEmail(e.target.value)} 
+                    />
+                    <input 
                         placeholder="Password" 
                         id="password" 
                         name="password" 
@@ -95,7 +103,6 @@ function Register() {
                     <div id='login-nav'>
                         <p>Already have an account? <Link to='/login'>Log in</Link></p>
                     </div>
-                    <button className='back-btn' onClick={handleBack}>← Back to home</button>
                 </div>
             </div>
         </>
