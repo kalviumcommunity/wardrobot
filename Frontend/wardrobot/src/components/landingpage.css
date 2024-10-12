@@ -1,0 +1,180 @@
+#logo{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    margin: 10px;
+}
+.texts{
+    position: relative;
+    bottom: 30px;
+}
+.head1,.head2{
+    font-size: 4.5rem;
+    font-weight: 900;
+}
+.head1{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    left: 30px;
+    transition: all 1s;
+}
+.head2{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    bottom: 190px;
+    right: 30px;
+}
+.wardrobe{
+    position: relative;
+    bottom: 100px;
+    font-size: 9.5rem;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,  #A9FFD6,#004323); /* Gradient from left to right */
+    -webkit-background-clip: text;
+    background-clip: text; 
+    color: transparent; 
+    text-shadow: -3px 10px 4px rgba(0, 0, 0, 0.2), -1px -2px 4px rgba(255,255,255,0.1);
+}
+.texts{
+    position: relative;
+    height: 30px;
+}
+p{
+    display: flex;
+    justify-content: flex-end;
+    text-align: left;
+    position: relative;
+    left: 35px;
+    top: 230px;
+    width: 350px;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.616);
+}
+h3{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 220px;
+    margin-left: 35px;
+    font-size: 2rem;
+    font-weight: 400;
+}
+.setup-btn{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    left: 35px;
+    top: 200px;
+    font-size: 1.7rem;
+    background-color: #3ab87b ;
+    border-radius: 5px;
+    border: none;
+    padding: 2px 15px 2px 15px;
+    color: white;
+    box-shadow: -5px 6px 8px rgba(0, 0, 0, 0.686);
+    transition: all 0.3s ease;
+    width: 230px;
+    text-decoration: none;
+}
+.setup-btn:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); 
+    transform: translateY(2px);
+}
+#down-btn{
+    position: relative;
+    left: 7px;
+    top: 7px;
+    height: 20px;
+}
+#ellipse{
+    position: absolute;
+    left: 87%;
+    top: 0px;
+    display: flex;
+    justify-content: flex-end;
+
+}
+#shirt1{
+    display: none;
+}
+.move-left {
+    transform: translateX(-500px);
+    transition: transform 1s ease-in-out;
+}
+.move-right {
+    transform: translateX(500px);
+    transition: transform 1s ease-in-out;
+}
+.move-front{
+    transform: scale(150);
+    transition: transform 5s ease-in-out;
+}
+@media (max-width: 480px){
+    #logo{
+        height: 25px;
+        justify-content: center;
+        margin-left: 30%;
+        margin-top: -19px;
+    }
+    .head1,.head2{
+        font-size: 1.7rem;
+    }
+    .head1{
+        top: -30px;
+    }
+    .head2{
+        top: -130px;
+    }
+    .wardrobe{
+        font-size: 3.5rem;
+        top: -80px;
+    }
+    p{
+        font-size: 0.6rem;
+        width: 170px;
+        text-align: center;
+        width: 350px;
+        left: 10px;
+    }
+    .texts{
+        position: relative;
+        top: 130px;
+    }
+    h3{
+        font-size: 1rem;
+        justify-content: center;
+        margin-left: 10px;
+    }
+    .setup-btn{
+        font-size: 0.7rem;
+        width: 100px;
+        padding: 1px 7px 1px 7px;
+        border-radius: 2px;
+        justify-content: center;
+        left: 140px;
+        top: 250px;
+        box-shadow: -2.5px 3px 4px rgba(0, 0, 0, 0.686);
+    }
+    #down-btn{
+        position: relative;
+        left: 4px;
+        top: 3px;
+        height: 10px;
+    }
+    #ellipse{
+        height: 50px;
+        left: 90%;
+    }
+    #shirt1{
+        position: relative;
+        top: 300px;
+        margin-left: 75px;
+        display: flex;
+        justify-content: center;
+    }
+}

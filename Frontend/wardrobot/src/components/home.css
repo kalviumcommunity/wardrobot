@@ -1,0 +1,54 @@
+.user-prof-container{
+    height: 100px;
+    width: 100px;
+}
+.user-prof{
+    height: 120px;
+    width: 120px;
+    border-radius: 150px;
+}
+.userDetails {
+    width: 270px;
+    height: 120px;
+    padding: 20px 15px 25px 15px;
+    border-radius: 15px;
+    background-color: #F6F9FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.userDetails h3{
+    position: relative;
+    top: -110px;
+    left: 110px;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.userDetails p:first-of-type{
+    font-size: 0.9rem;
+    color: black;
+    position: relative;
+    top: -120px;
+    left: -137px;
+}
+.userDetails p:nth-of-type(2){
+    font-size: 0.9rem;
+    color: black;
+    position: relative;
+    top: -127px;
+    left: -120px;
+}
+.userDetails button{
+    position: relative;
+    top: -135px;
+    left: 140px;
+    font-size: 0.8rem;
+    color: #87B4C2;
+    border: 3px solid #87B4C2;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 2px 10px 2px 10px;
+}
+.users-grid{
+    display: flex;
+}
