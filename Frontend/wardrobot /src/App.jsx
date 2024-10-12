@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Landingpage from './components/landingpage';
 import Homepage from './components/homepage';
 import Setuppage1 from './components/setupage1';
