@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Navbar from "./navbars";
+import Navbar from "../../components/navbars";
 import './landingpage.css';
-import logo from "./assets/logo.png";
-import downbtn from "./assets/DownButton.png";
-import ellipse from "./assets/Ellipse.png";
-import shirt1 from "./assets/shit1.png"; // Make sure the filename is correct; should it be 'shirt1.png'?
+import logo from "../../assets/logo.png";
+import downbtn from "../../assets/DownButton.png";
+import ellipse from "../../assets/Ellipse.png";
+import shirt1 from "../../assets/shit1.png"; // Make sure the filename is correct; should it be 'shirt1.png'?
 import { useNavigate } from 'react-router-dom';
 
 function Landingpage() {

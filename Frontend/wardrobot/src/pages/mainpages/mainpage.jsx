@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from './navbars';
-import logo from './assets/logo.png';
-import ellipse from './assets/Ellipse.png';
+import Navbar from '../../components/navbars';
+import logo from '../../assets/logo.png';
+import ellipse from '../../assets/Ellipse.png';
 import axios from 'axios';
-import Climate from './climate';
+import Climate from '../../components/climate';
 import './mainpage.css';
 import Cookies from 'js-cookie';
 

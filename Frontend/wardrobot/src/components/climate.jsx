@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import cloud from "./assets/cloud.png";
-import sun from "./assets/sun.png";
-import snowflake from "./assets/snowflake.png";
-import arrow from "./assets/UpwardArrow.png";
+import cloud from "../assets/cloud.png";
+import sun from "../assets/sun.png";
+import snowflake from "../assets/snowflake.png";
+import arrow from "../assets/UpwardArrow.png";
 import Cookies from 'js-cookie';
 import "./climate.css";
 

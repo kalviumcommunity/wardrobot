@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Landingpage from './components/landingpage';
-import Homepage from './components/homepage';
-import Setuppage1 from './components/setupage1';
-import SetupPage from "./components/setuppage";
-import Login from './components/login';
-import Register from './components/register';
-import Mainpage from './components/mainpage';
-import Test from "./components/test";
-import UserTest from "./components/usertest"
-import Wardrobe from './components/wardrobe';
+import Landingpage from './pages/home/landingpage';
+import Homepage from './pages/home/homepage';
+import Setuppage1 from './pages/setuppages/setupage1';
+import SetupPage from "./pages/setuppages/setuppage";
+import Login from './pages/Authentication/login';
+import Register from './pages/Authentication/register';
+import Mainpage from './pages/mainpages/mainpage';
+import Test from "./pages/testingpages/test";
+import UserTest from "./pages/testingpages/usertest"
+import Wardrobe from './pages/mainpages/wardrobe';
 import Location from './components/locationfetcher';
-import Home from './components/home';
+import Home from './pages/home/home';
 // import Climate from './components/climate';
 import { Route, Routes, Navigate } from 'react-router-dom';
 

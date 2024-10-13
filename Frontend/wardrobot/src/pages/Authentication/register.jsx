@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './register.css';
 import axios from 'axios';
-import logo from "./assets/logo.png";
-import profile from "./assets/profile.png";
-import ellipse from "./assets/Ellipse.png";
+import logo from "../../assets/logo.png";
+import profile from "../../assets/profile.png";
+import ellipse from "../../assets/Ellipse.png";
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Loader from "./Loader.jsx"; 
+import Loader from "../../components/Loader.jsx"; 
 
 function Register() {
     const [userName, setUserName] = useState('');

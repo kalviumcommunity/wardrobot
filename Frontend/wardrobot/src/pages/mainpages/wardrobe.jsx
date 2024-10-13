@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import Navbar from "./navbars";
-import logo from "./assets/logo.png";
-import ellipse from "./assets/Ellipse.png";
+import Navbar from "../../components/navbars";
+import logo from "../../assets/logo.png";
+import ellipse from "../../assets/Ellipse.png";
 import './wardrobe.css';
 import Cookies from 'js-cookie';
-import heart from "./assets/Heart.png";
-import Delete from "./assets/Remove.png";
-import Fav from "./assets/Favorite.png"
+import heart from "../../assets/Heart.png";
+import Delete from "../../assets/Remove.png";
+import Fav from "../../assets/Favorite.png"
 
 const Wardrobe = () => {
     const [occasions, setOccasions] = useState([]);

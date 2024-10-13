@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './login.css';
-import logo from "./assets/logo.png";
+import logo from "../../assets/logo.png";
 import Cookies from 'js-cookie';
 import { Link } from 'react-router-dom';
-import profile from "./assets/profile.png";
-import ellipse from "./assets/Ellipse.png";
+import profile from "../../assets/profile.png";
+import ellipse from "../../assets/Ellipse.png";
 import { useNavigate } from 'react-router-dom';
-import Loader from "./Loader.jsx";
+import Loader from "../../components/Loader.jsx";
 
 function Login() {
     const [email, setEmail] = useState('');

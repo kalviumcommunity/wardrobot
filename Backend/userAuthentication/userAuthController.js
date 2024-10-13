@@ -69,5 +69,29 @@ const loginUser = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+const fetchUserDetails = async (req, res) => {
+  const { email } = req.body; 
 
-module.exports = { registerUser, loginUser };
+  try {
+    const normalizedEmail = email.trim().toLowerCase();
+    const users = await User.find(); 
+    let user = null;
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email.toLowerCase() === normalizedEmail) {
+        user = users[i];
+        break; 
+      }
+    }
+    if (!user) {
+      return res.status(401).json({ error: "User not found with the given email" });
+    }
+    return res.status(200).json({ userName: user.userName });
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
+};
+
+
+
+
+module.exports = { registerUser, loginUser ,fetchUserDetails};

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from "./navbars";
-import logo from "./assets/logo.png";
-import ellipse from "./assets/Ellipse.png";
-import shirt2 from "./assets/shirt2.png";
+import Navbar from "../../components/navbars";
+import logo from "../../assets/logo.png";
+import ellipse from "../../assets/Ellipse.png";
+import shirt2 from "../../assets/shirt2.png";
 import './setuppage.css';
 
 function Setuppage() {
