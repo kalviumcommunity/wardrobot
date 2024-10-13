@@ -10,7 +10,7 @@ import Loader from "./Loader.jsx";
 
 function Register() {
     const [userName, setUserName] = useState('');
-    const [email,setEmail]=useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false); 
@@ -18,37 +18,12 @@ function Register() {
 
     const handleBack = () => {
         navigate('/');
-    }
+    };
 
-    const handleLogin = (e) => {
-        e.preventDefault();
+    const handleLogin = (event) => {
+        event.preventDefault();
         if (validatePassword()) {
             SignUp();
-        }
-    }
-
-    const SignUp = async () => {
-        if (!userName){
-            alert("Enter user name");
-            return;
-        } 
-        if (!password){
-            alert("Enter password");
-            return;
-        }
-        if (password !== confirmPassword) {
-            alert("Passwords do not match");
-            return;
-        }
-        setLoading(true); 
-        try {
-            const userData = await axios.post('http://localhost:3000/users/userupload', { userName,email, password });
-            console.log(userData);
-            navigate('/login');
-        } catch (err) {
-            console.error(err);
-        } finally {
-            setLoading(false); 
         }
     };
 
@@ -59,7 +34,43 @@ function Register() {
             return false;
         }
         return true;
-    }
+    };
+
+    const SignUp = async () => {
+        if (!userName) {
+            alert("Enter user name");
+            return;
+        } 
+        if (!password) {
+            alert("Enter password");
+            return;
+        }
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+        setLoading(true); 
+        try {
+            const response = await fetch(`http://localhost:3000/users/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userName: userName,
+                    email: email,
+                    password: password
+                })
+            });
+            const data = await response.json();
+            console.log(data);
+            navigate('/login');
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false); 
+        }
+    };
 
     return (
         <>
@@ -71,13 +82,13 @@ function Register() {
                     <div className="h1">Signup</div>
                     <input 
                         placeholder="Username" 
-                        id="email" 
-                        name="email" 
+                        id="username" 
+                        name="username" 
                         type="text" 
                         onChange={(e) => setUserName(e.target.value)} 
                     />
                     <input 
-                        placeholder="email" 
+                        placeholder="Email" 
                         id="email" 
                         name="email" 
                         type="text" 
@@ -92,8 +103,8 @@ function Register() {
                     />
                     <input 
                         placeholder="Confirm Password" 
-                        id="password" 
-                        name="password" 
+                        id="confirm-password" 
+                        name="confirm-password" 
                         type="password" 
                         onChange={e => setConfirmPassword(e.target.value)} 
                     />
@@ -108,6 +119,5 @@ function Register() {
         </>
     );
 }
-
 
 export default Register;
