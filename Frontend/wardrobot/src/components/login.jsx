@@ -25,44 +25,6 @@ function Login() {
         }
     };
 
-    // const handleLogin = (event) => {
-    //     event.preventDefault();
-    //     signin();
-    // };
-
-    // const signin = async () => {
-    //     console.log('Sign in function called');
-    //     setLoading(true);
-    //     try {
-    //         const response = await fetch(`http://localhost:3000/users/signin`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 email: email,  // Corrected from userName to email
-    //                 password: password,
-    //             }),
-    //         });
-    //         const data = await response.json();
-    //         if (response.ok) {
-    //             console.log("Login successful");
-    //             setEmail('');  // Clear input after successful login
-    //             setPassword(''); 
-    //             // Navigate or store login data, e.g., setting cookies
-    //             navigate('/dashboard');  // Redirect to the dashboard after login
-    //         } else {
-    //             console.log("Login error");
-    //             alert(data.message || "Login failed. Please check your credentials.");
-    //         }
-    //     } catch (err) {
-    //         console.error(err);
-    //         alert("An error occurred. Please try again later.");
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
-
     const handleLogin = (event) => {
         event.preventDefault();
         signin();
@@ -70,6 +32,7 @@ function Login() {
     
     const signin = async () => {
         console.log('Sing in funtion called');
+        setLoading(true);
         try {
           const response = await fetch(`http://localhost:3000/users/signin`, {
             method: 'POST',
@@ -86,11 +49,16 @@ function Login() {
             setEmail('');
             setPassword('');
             console.log(data);
+            navigate('/home');
+            Cookies.set('email', email, { expires: 7 });
           } else {
             console.error(data.error);
+            alert(data.message || "Login failed. Please check your credentials.");
           }
         } catch (err) {
           console.error(err);
+        }finally {
+                setLoading(false);
         }
     };
 
