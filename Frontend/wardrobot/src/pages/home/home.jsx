@@ -10,7 +10,7 @@ function Home() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/user/userdata');
+                const response = await axios.get('https://wardrobot-6.onrender.com/user/userdata');
                 setUsers(response.data);
                 console.log(response.data);
 
@@ -18,7 +18,7 @@ function Home() {
                 response.data.forEach(async (user) => {
                     if (user.userName) {
                         try {
-                            const fetchedUserDatas = await axios.get(`http://localhost:3000/api/username/${user.userName}`);
+                            const fetchedUserDatas = await axios.get(`https://wardrobot-6.onrender.com/api/username/${user.userName}`);
                             setUserDatas(prevData => ({
                                 ...prevData,
                                 [user.userName]: fetchedUserDatas.data
@@ -47,7 +47,7 @@ function Home() {
                         <div key={user.userName} className="userDetails">
                             <div className="user-prof-container">
                                 {user.profile && (
-                                    <img className="user-prof" src={`http://localhost:3000/images/${user.profile}`} alt="Profile" />
+                                    <img className="user-prof" src={`https://wardrobot-6.onrender.com/images/${user.profile}`} alt="Profile" />
                                 )}
                             </div>
                             <h3>{user.userName}</h3>

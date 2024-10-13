@@ -43,7 +43,7 @@ function Setuppage() {
         }
 
         try {
-            const update = await axios.put(`http://localhost:3000/api/updateoutfit/${dataId}`, {
+            const update = await axios.put(`https://wardrobot-6.onrender.com/api/updateoutfit/${dataId}`, {
                 dressType: dressType,
                 occasion: occasion
             });

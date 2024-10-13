@@ -37,7 +37,7 @@ function Mainpage() {
     const fetchOutfit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
+            const response = await axios.get(`https://wardrobot-6.onrender.com/api/outfits/${userName}/${occasion}`);
             console.log('Outfit response:', response.data);
             if (response.data.length > 0) {
                 setOutfits(response.data);
@@ -62,7 +62,7 @@ function Mainpage() {
     const fetchFavOutfit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get(`http://localhost:3000/api/favoriteOutfits/${userName}`);
+            const response = await axios.get(`https://wardrobot-6.onrender.com/api/favoriteOutfits/${userName}`);
             console.log('Outfit response:', response.data);
             if (response.data.length > 0) {
                 setOutfits(response.data);
@@ -148,13 +148,13 @@ function Mainpage() {
                 <button className='add-new1' onClick={() => navigate('/wardrobe')}>Open your wardrobe</button>
                 <div className='image-display'>
                     <div id='shirt'>
-                        <img id='shirt-img' className='images' src={shirt ? `http://localhost:3000/images/${shirt}` : ''} alt="" />
+                        <img id='shirt-img' className='images' src={shirt ? `https://wardrobot-6.onrender.com/images/${shirt}` : ''} alt="" />
                     </div>
                     <div id='pant'>
-                        <img id='pant-img' className='images' src={pant ? `http://localhost:3000/images/${pant}` : ''} alt="" />
+                        <img id='pant-img' className='images' src={pant ? `https://wardrobot-6.onrender.com/images/${pant}` : ''} alt="" />
                     </div>
                     <div id='accessory'>
-                        <img id='acess-img' className='images' src={accessory ? `http://localhost:3000/images/${accessory}` : ''} alt="" />
+                        <img id='acess-img' className='images' src={accessory ? `https://wardrobot-6.onrender.com/images/${accessory}` : ''} alt="" />
                     </div>
                 </div>
                 <div className='buttons'>

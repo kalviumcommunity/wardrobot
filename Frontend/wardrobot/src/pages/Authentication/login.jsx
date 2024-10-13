@@ -34,7 +34,7 @@ function Login() {
         console.log('Sing in funtion called');
         setLoading(true);
         try {
-          const response = await fetch(`http://localhost:3000/users/signin`, {
+          const response = await fetch(`https://wardrobot-6.onrender.com/users/signin`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

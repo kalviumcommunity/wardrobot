@@ -48,7 +48,7 @@ function Setuppage1() {
         formData.append('favOutfit', false);
 
         try {
-            const response = await axios.post('http://localhost:3000/api/upload', formData, {
+            const response = await axios.post('https://wardrobot-6.onrender.com/api/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

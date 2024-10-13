@@ -23,13 +23,15 @@ function Homepage() {
                 console.error("No email found in cookies");
                 return;
             }
-            const response = await axios.post(`http://localhost:3000/users/fetchUserName/`, {
+            const response = await axios.post(`https://wardrobot-6.onrender.com/users/fetchUserName/`, {
                 email: useremail, 
             });
             const user = response.data.userName; 
     
             setUsername(user); 
             console.log("Fetched username:", user); 
+            Cookies.set('userName',user)
+            
         } catch (error) {
             console.error("Error fetching username:", error); 
         }

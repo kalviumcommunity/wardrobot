@@ -24,7 +24,7 @@ const Wardrobe = () => {
                 const validOccasions = [];
                 for (const occasion of storedOccasions) {
                     try {
-                        const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion.toLowerCase()}`);
+                        const response = await axios.get(`https://wardrobot-6.onrender.com/api/outfits/${userName}/${occasion.toLowerCase()}`);
                         if (response.data.length > 0) {
                             outfitsData[occasion] = response.data;
                             validOccasions.push(occasion);
@@ -47,7 +47,7 @@ const Wardrobe = () => {
 
     const deleteOutfit = async (occasion, outfitId) => {
         try {
-            await axios.delete(`http://localhost:3000/api/deleteOutfit/${outfitId}`);
+            await axios.delete(`https://wardrobot-6.onrender.com/api/deleteOutfit/${outfitId}`);
             const updatedWardrobe = { ...wardrobe };
             updatedWardrobe[occasion] = updatedWardrobe[occasion].filter(outfit => outfit._id !== outfitId);
             if (updatedWardrobe[occasion].length === 0) {
@@ -70,7 +70,7 @@ const Wardrobe = () => {
         
         try {
             const currentFavStatus = isFav[dataId] || false;
-            await axios.put(`http://localhost:3000/api/updateoutfit/${dataId}`, {
+            await axios.put(`https://wardrobot-6.onrender.com/api/updateoutfit/${dataId}`, {
                 favOutfit: !currentFavStatus
             });
             setIsFav(prevState => ({ ...prevState, [dataId]: !currentFavStatus }));
@@ -94,7 +94,7 @@ const Wardrobe = () => {
                             <div className="sub-containers">
                                 {wardrobe[occasion]?.map((outfit, idx) => (
                                     <div className="images-holder" key={idx}>
-                                        <img src={`http://localhost:3000/images/${outfit.image}`} alt={outfit.dressType} className="outfit-image" />
+                                        <img src={`https://wardrobot-6.onrender.com/images/${outfit.image}`} alt={outfit.dressType} className="outfit-image" />
                                         <button className="deleteoutfitbutton" onClick={() => deleteOutfit(occasion, outfit._id)}>Delete Dress <img src={Delete}  /> </button>
                                         <button 
                                             style={{backgroundColor: isFav[outfit._id] ? 'white' : 'red',color:isFav[outfit._id] ? 'red' : 'white'}}

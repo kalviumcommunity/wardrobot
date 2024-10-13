@@ -113,7 +113,7 @@ function Climate() {
     const fetchOutfit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.get(`http://localhost:3000/api/outfits/${userName}/${occasion}`);
+            const response = await axios.get(`https://wardrobot-6.onrender.com/api/outfits/${userName}/${occasion}`);
             console.log('Outfit response:', response.data);
             setOutfits(response.data);
             setCurrentOutfitIndex(0);
@@ -178,13 +178,13 @@ function Climate() {
                 </div>
                 <div className="outfit-display">
                     <div className="shirt">
-                        <img className='images' src={`http://localhost:3000/images/${shirt}`} alt="Shirt" />
+                        <img className='images' src={`https://wardrobot-6.onrender.com/images/${shirt}`} alt="Shirt" />
                     </div>
                     <div className="pant">
-                        <img className='images' src={`http://localhost:3000/images/${pant}`} alt="Pant" />
+                        <img className='images' src={`https://wardrobot-6.onrender.com/images/${pant}`} alt="Pant" />
                     </div>
                     <div className="accessory">
-                        <img className='images' src={`http://localhost:3000/images/${accessory}`} alt="Accessory" />
+                        <img className='images' src={`https://wardrobot-6.onrender.com/images/${accessory}`} alt="Accessory" />
                     </div>
                 </div>
                 <div className="buttons2">
